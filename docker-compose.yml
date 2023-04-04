@@ -1,0 +1,15 @@
+version: "3"
+services:
+  cockroach-db:
+    image: cockroachdb/cockroach
+    ports:
+      - "26257:26257"
+      - "8080:8080"
+    environment:
+      - COCKROACH_DATABASE=testdb
+      - COCKROACH_USER=cockroach
+    command: start-single-node --insecure
+  service:
+    build: .
+    ports:
+      - "8081:8081"
